@@ -16,17 +16,19 @@ import Contact from "./pages/Contact";
 import Privacy from "./pages/Privacy";
 import Terms from "./pages/Terms";
 
+import Admin from "./pages/Admin";
+
 function App() {
   return (
     <BrowserRouter>
+
       <Navbar />
 
       <Routes>
-        <Route path="/" element={<Home />} />
 
         <Route
-          path="/article/:id"
-          element={<Article />}
+          path="/"
+          element={<Home />}
         />
 
         <Route
@@ -50,6 +52,16 @@ function App() {
         />
 
         <Route
+          path="/article/:id"
+          element={<Article />}
+        />
+
+        <Route
+          path="/admin"
+          element={<Admin />}
+        />
+
+        <Route
           path="/about"
           element={<About />}
         />
@@ -68,9 +80,11 @@ function App() {
           path="/terms"
           element={<Terms />}
         />
+
       </Routes>
 
       <Footer />
+
     </BrowserRouter>
   );
 }

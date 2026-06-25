@@ -1,16 +1,21 @@
-import useArticles from "../data/useArticles";
 import ArticleCard from "../components/ArticleCard";
+import useArticles from "../data/useArticles";
+import useSupabaseArticles from "../data/useSupabaseArticles";
 
 function Football() {
-  const articles = useArticles("sports");
+  const newsApiArticles =
+    useArticles("sports") || [];
 
-  if (!articles) {
-    return (
-      <div className="container">
-        <h1>Loading Football News...</h1>
-      </div>
-    );
-  }
+  const supabaseArticles =
+    useSupabaseArticles() || [];
+
+  const footballArticles = [
+    ...supabaseArticles.filter(
+      (article) =>
+        article.category === "football"
+    ),
+    ...newsApiArticles,
+  ];
 
   return (
     <div className="container">
@@ -19,12 +24,14 @@ function Football() {
       </h1>
 
       <div className="article-grid">
-        {articles.map((article) => (
-          <ArticleCard
-            key={article.id}
-            article={article}
-          />
-        ))}
+        {footballArticles.map(
+          (article, index) => (
+            <ArticleCard
+              key={`${article.id}-${index}`}
+              article={article}
+            />
+          )
+        )}
       </div>
     </div>
   );

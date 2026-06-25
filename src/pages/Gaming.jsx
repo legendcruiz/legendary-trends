@@ -1,16 +1,20 @@
-import useArticles from "../data/useArticles";
 import ArticleCard from "../components/ArticleCard";
+import useArticles from "../data/useArticles";
+import useSupabaseArticles from "../data/useSupabaseArticles";
 
 function Gaming() {
-  const articles = useArticles("technology");
+  const newsApiArticles =
+    useArticles("technology") || [];
 
-  if (!articles) {
-    return (
-      <div className="container">
-        <h1>Loading Gaming News...</h1>
-      </div>
-    );
-  }
+  const supabaseArticles =
+    useSupabaseArticles() || [];
+
+  const gamingArticles = [
+    ...supabaseArticles.filter(
+      (article) => article.category === "gaming"
+    ),
+    ...newsApiArticles,
+  ];
 
   return (
     <div className="container">
@@ -19,9 +23,9 @@ function Gaming() {
       </h1>
 
       <div className="article-grid">
-        {articles.map((article) => (
+        {gamingArticles.map((article, index) => (
           <ArticleCard
-            key={article.id}
+            key={`${article.id}-${index}`}
             article={article}
           />
         ))}

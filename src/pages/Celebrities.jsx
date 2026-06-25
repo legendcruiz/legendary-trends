@@ -1,16 +1,21 @@
-import useArticles from "../data/useArticles";
 import ArticleCard from "../components/ArticleCard";
+import useArticles from "../data/useArticles";
+import useSupabaseArticles from "../data/useSupabaseArticles";
 
 function Celebrities() {
-  const articles = useArticles("entertainment");
+  const newsApiArticles =
+    useArticles("entertainment") || [];
 
-  if (!articles) {
-    return (
-      <div className="container">
-        <h1>Loading Celebrity News...</h1>
-      </div>
-    );
-  }
+  const supabaseArticles =
+    useSupabaseArticles() || [];
+
+  const celebrityArticles = [
+    ...supabaseArticles.filter(
+      (article) =>
+        article.category === "celebrities"
+    ),
+    ...newsApiArticles,
+  ];
 
   return (
     <div className="container">
@@ -19,12 +24,14 @@ function Celebrities() {
       </h1>
 
       <div className="article-grid">
-        {articles.map((article) => (
-          <ArticleCard
-            key={article.id}
-            article={article}
-          />
-        ))}
+        {celebrityArticles.map(
+          (article, index) => (
+            <ArticleCard
+              key={`${article.id}-${index}`}
+              article={article}
+            />
+          )
+        )}
       </div>
     </div>
   );
