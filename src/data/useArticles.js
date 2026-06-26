@@ -1,32 +1,48 @@
 import { useEffect, useState } from "react";
 
+const categoryMap = {
+  general: "general",
+  technology: "technology",
+  sports: "sports",
+  entertainment: "entertainment",
+};
+
 export default function useArticles(category = "general") {
-  const [articles, setArticles] = useState(null);
+  const [articles, setArticles] = useState([]);
 
   useEffect(() => {
     async function fetchNews() {
       try {
-        const API_KEY = import.meta.env.VITE_NEWS_API_KEY;
+        const API_KEY =
+          import.meta.env.VITE_CURRENTS_API_KEY;
+
+        const apiCategory =
+          categoryMap[category] || "general";
 
         const res = await fetch(
-          `https://newsapi.org/v2/top-headlines?country=us&category=${category}&pageSize=30&apiKey=${API_KEY}`
+          `https://api.currentsapi.services/v1/latest-news?language=en&category=${apiCategory}&page_size=30&apiKey=${API_KEY}`
         );
 
         const data = await res.json();
 
-        if (!Array.isArray(data?.articles)) {
+        if (
+          data.status !== "ok" ||
+          !Array.isArray(data.news)
+        ) {
+          console.log(data);
           setArticles([]);
           return;
         }
 
         setArticles(
-          data.articles.map((item, index) => ({
-            id: index,
+          data.news.map((item, index) => ({
+            id: item.id || index,
 
-            title: item.title || "No title",
+            title:
+              item.title || "No title",
 
             image:
-              item.urlToImage ||
+              item.image ||
               "https://images.unsplash.com/photo-1504711434969-e33886168f5c",
 
             excerpt:
@@ -34,26 +50,25 @@ export default function useArticles(category = "general") {
               "No description available.",
 
             content:
-              item.content ||
               item.description ||
               "No content available.",
 
-            url: item.url || "#",
+            url:
+              item.url || "#",
 
             author:
               item.author ||
               "Legendary Trends",
 
             source:
-              item.source?.name ||
-              "Unknown Source",
+              "Currents",
 
             publishedAt:
-              item.publishedAt || "",
+              item.published || "",
           }))
         );
       } catch (err) {
-        console.log(err);
+        console.error(err);
         setArticles([]);
       }
     }
