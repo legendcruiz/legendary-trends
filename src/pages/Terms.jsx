@@ -1,66 +1,43 @@
-function Terms() {
+import React from "react";
+
+export default function Terms() {
   return (
-    <div className="container page">
-      <h1>Terms and Conditions</h1>
+    <div style={{ padding: "40px", maxWidth: "900px", margin: "auto" }}>
+      <h1>Terms & Conditions</h1>
 
       <p>
-        Welcome to Legendary Trends. By accessing and using this website,
-        you agree to comply with these Terms and Conditions.
+        Welcome to Legendary Trends. By accessing this website, you agree to these terms.
       </p>
 
       <h2>Use of Website</h2>
-
       <p>
-        The content published on Legendary Trends is intended for
-        informational and entertainment purposes only.
+        You agree to use this website for lawful purposes only. You must not misuse or attempt to disrupt the website.
       </p>
 
+      <h2>Content</h2>
       <p>
-        Users must not copy, redistribute, modify, or republish any content
-        without written permission.
+        All content published on Legendary Trends is for informational purposes. We may publish news, articles, and opinions.
       </p>
 
-      <h2>Intellectual Property</h2>
-
+      <h2>Third-Party Content</h2>
       <p>
-        All articles, graphics, branding, and original content published on
-        Legendary Trends are protected by copyright laws.
+        Some content may come from third-party APIs. We are not responsible for the accuracy of external sources.
       </p>
 
-      <h2>Third Party Links</h2>
-
+      <h2>Ads</h2>
       <p>
-        Our website may contain links to third-party websites.
-        We are not responsible for the content or privacy practices
-        of external sites.
+        This website may display advertisements through Google AdSense or other networks.
       </p>
 
-      <h2>Disclaimer</h2>
-
+      <h2>Changes</h2>
       <p>
-        While we strive to ensure accuracy, we do not guarantee that all
-        information is complete, accurate, or up to date.
+        We may update these terms at any time without notice.
       </p>
 
-      <h2>Limitation of Liability</h2>
-
+      <h2>Contact</h2>
       <p>
-        Legendary Trends shall not be held liable for any damages resulting
-        from the use of this website.
-      </p>
-
-      <h2>Changes to Terms</h2>
-
-      <p>
-        We reserve the right to update these terms at any time.
-      </p>
-
-      <p>
-        Continued use of the website after changes are posted constitutes
-        acceptance of those changes.
+        If you have questions, use the Contact page.
       </p>
     </div>
   );
 }
-
-export default Terms;

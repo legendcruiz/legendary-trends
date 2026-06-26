@@ -1,71 +1,48 @@
-function Privacy() {
+import React from "react";
+
+export default function Privacy() {
   return (
-    <div className="container page">
+    <div style={{ padding: "40px", maxWidth: "900px", margin: "auto" }}>
       <h1>Privacy Policy</h1>
 
       <p>
-        At Legendary Trends, we value your privacy and are committed to
-        protecting your personal information.
+        At Legendary Trends, we respect your privacy and are committed to protecting any information you may provide while using our website.
       </p>
 
       <h2>Information We Collect</h2>
-
       <p>
-        We may collect non-personal information such as browser type,
-        operating system, device information, and pages visited.
+        We may collect non-personal information such as browser type, device information, and pages visited to improve user experience.
       </p>
 
+      <h2>How We Use Information</h2>
       <p>
-        We may also collect information voluntarily submitted through
-        contact forms.
+        We use collected data to improve website performance, content quality, and user experience.
       </p>
 
       <h2>Cookies</h2>
-
       <p>
-        This website uses cookies to improve user experience,
-        analyze traffic, and personalize content.
+        This website may use cookies to enhance browsing experience. You can disable cookies in your browser settings.
       </p>
 
+      <h2>Third-Party Services</h2>
       <p>
-        Cookies help us understand how visitors interact with our website.
+        We may use third-party services such as analytics tools and news APIs which may collect limited data as per their policies.
       </p>
 
-      <h2>Advertising</h2>
-
+      <h2>Google AdSense</h2>
       <p>
-        We may use third-party advertising services such as Google AdSense.
+        We may use Google AdSense to display ads. Google may use cookies to serve personalized ads based on your visits to this and other websites.
       </p>
 
+      <h2>Security</h2>
       <p>
-        These partners may use cookies and similar technologies to
-        deliver personalized advertisements.
+        We take reasonable measures to protect your data, but no method of transmission over the internet is 100% secure.
       </p>
 
-      <h2>Analytics</h2>
-
+      <h2>Contact Us</h2>
       <p>
-        We may use analytics tools to understand website performance and
-        improve user experience.
-      </p>
-
-      <h2>Data Security</h2>
-
-      <p>
-        We implement reasonable measures to protect user information.
-      </p>
-
-      <h2>Changes</h2>
-
-      <p>
-        We may update this Privacy Policy from time to time.
-      </p>
-
-      <p>
-        Last Updated: June 2026
+        If you have any questions about this Privacy Policy, contact us via the Contact page.
       </p>
     </div>
   );
 }
-
-export default Privacy;
