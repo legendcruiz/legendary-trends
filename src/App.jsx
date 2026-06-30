@@ -1,5 +1,4 @@
 import { Routes, Route } from "react-router-dom";
-import { Helmet } from "react-helmet-async";
 
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
@@ -17,22 +16,13 @@ import About from "./pages/About";
 import Contact from "./pages/Contact";
 import Privacy from "./pages/Privacy";
 import Terms from "./pages/Terms";
+import NotFound from "./pages/NotFound";
 
 import Admin from "./pages/Admin";
 
 function App() {
   return (
     <>
-      {/* SEO DEFAULT (ADDED ONLY) */}
-      <Helmet>
-        <title>Legendary Trends | Gaming, Football & Tech News</title>
-        <meta
-          name="description"
-          content="Latest news on gaming, football, movies, celebrities, and technology. Updated daily with trending stories."
-        />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      </Helmet>
-
       <Navbar />
 
       <Routes>
@@ -52,6 +42,9 @@ function App() {
         <Route path="/contact" element={<Contact />} />
         <Route path="/privacy" element={<Privacy />} />
         <Route path="/terms" element={<Terms />} />
+
+        {/* 404 Page */}
+        <Route path="*" element={<NotFound />} />
       </Routes>
 
       <Footer />
