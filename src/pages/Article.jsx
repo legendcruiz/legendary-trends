@@ -1,4 +1,5 @@
 import { Link, useLocation, useParams } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 import useSupabaseArticles from "../data/useSupabaseArticles";
 
 function Article() {
@@ -20,6 +21,14 @@ function Article() {
   if (!article) {
     return (
       <div className="container article-page">
+        <Helmet>
+          <title>Article Not Found | Legendary Trends</title>
+          <meta
+            name="description"
+            content="The requested article could not be found."
+          />
+        </Helmet>
+
         <h1>Article Not Found</h1>
 
         <p>
@@ -35,6 +44,92 @@ function Article() {
 
   return (
     <div className="container article-page">
+
+      <Helmet>
+        <title>{article.title} | Legendary Trends</title>
+
+        <meta
+          name="description"
+          content={
+            article.excerpt ||
+            "Latest news and trending stories from Legendary Trends."
+          }
+        />
+
+        <meta
+          name="keywords"
+          content={`${article.category}, news, Legendary Trends`}
+        />
+
+        <meta
+          name="author"
+          content="Legendary Trends"
+        />
+
+        <link
+          rel="canonical"
+          href={`https://legendary-trends.vercel.app/article/${article.id}`}
+        />
+
+        {/* Open Graph */}
+        <meta
+          property="og:type"
+          content="article"
+        />
+
+        <meta
+          property="og:title"
+          content={article.title}
+        />
+
+        <meta
+          property="og:description"
+          content={
+            article.excerpt ||
+            "Latest news from Legendary Trends."
+          }
+        />
+
+        <meta
+          property="og:image"
+          content={article.image}
+        />
+
+        <meta
+          property="og:url"
+          content={`https://legendary-trends.vercel.app/article/${article.id}`}
+        />
+
+        <meta
+          property="og:site_name"
+          content="Legendary Trends"
+        />
+
+        {/* Twitter */}
+        <meta
+          name="twitter:card"
+          content="summary_large_image"
+        />
+
+        <meta
+          name="twitter:title"
+          content={article.title}
+        />
+
+        <meta
+          name="twitter:description"
+          content={
+            article.excerpt ||
+            "Latest news from Legendary Trends."
+          }
+        />
+
+        <meta
+          name="twitter:image"
+          content={article.image}
+        />
+      </Helmet>
+
       <h1>{article.title}</h1>
 
       <img
