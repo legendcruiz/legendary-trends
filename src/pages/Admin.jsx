@@ -506,6 +506,10 @@ function Admin() {
               <option value="celebrities">
                 Celebrities
               </option>
+
+              <option value="technology">
+              Technology
+              </option>
             </select>
 
             <button

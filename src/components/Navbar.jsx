@@ -7,36 +7,28 @@ function Navbar() {
   return (
     <nav className="navbar">
 
-      <Link
-        to="/"
-        className="logo"
-      >
+      <Link to="/" className="logo">
         Legendary Trends
       </Link>
 
       <div
         className="hamburger"
-        onClick={() =>
-          setMenuOpen(!menuOpen)
-        }
+        onClick={() => setMenuOpen(!menuOpen)}
       >
         ☰
       </div>
 
-      <div
-        className={`nav-links ${
-          menuOpen ? "active" : ""
-        }`}
-      >
+      <div className={`nav-links ${menuOpen ? "active" : ""}`}>
+
         <Link to="/">Home</Link>
         <Link to="/gaming">Gaming</Link>
         <Link to="/movies">Movies</Link>
-        <Link to="/celebrities">
-          Celebrities
-        </Link>
-        <Link to="/football">
-          Football
-        </Link>
+        <Link to="/celebrities">Celebrities</Link>
+        <Link to="/football">Football</Link>
+
+        {/* ✅ ADD THIS */}
+        <Link to="/technology">Technology</Link>
+
       </div>
 
     </nav>
