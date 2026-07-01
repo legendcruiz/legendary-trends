@@ -1,4 +1,5 @@
 import { Routes, Route } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
@@ -20,9 +21,31 @@ import NotFound from "./pages/NotFound";
 
 import Admin from "./pages/Admin";
 
+const GA_ID = import.meta.env.VITE_GA_MEASUREMENT_ID;
+
 function App() {
   return (
     <>
+      <Helmet>
+        {GA_ID && (
+          <>
+            <script
+              async
+              src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}
+            />
+
+            <script>
+              {`
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('js', new Date());
+                gtag('config', '${GA_ID}');
+              `}
+            </script>
+          </>
+        )}
+      </Helmet>
+
       <Navbar />
 
       <Routes>
@@ -43,7 +66,6 @@ function App() {
         <Route path="/privacy" element={<Privacy />} />
         <Route path="/terms" element={<Terms />} />
 
-        {/* 404 Page */}
         <Route path="*" element={<NotFound />} />
       </Routes>
 
