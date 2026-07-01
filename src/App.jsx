@@ -27,6 +27,8 @@ function App() {
   return (
     <>
       <Helmet>
+
+        {/* ================= GOOGLE ANALYTICS ================= */}
         {GA_ID && (
           <>
             <script
@@ -44,6 +46,34 @@ function App() {
             </script>
           </>
         )}
+
+        {/* ================= SEO: ORGANIZATION ================= */}
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "NewsMediaOrganization",
+            name: "Legendary Trends",
+            url: "https://legendary-trends.vercel.app",
+            logo: "https://legendary-trends.vercel.app/favicon.png",
+            sameAs: []
+          })}
+        </script>
+
+        {/* ================= SEO: WEBSITE ================= */}
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "WebSite",
+            name: "Legendary Trends",
+            url: "https://legendary-trends.vercel.app",
+            potentialAction: {
+              "@type": "SearchAction",
+              target: "https://legendary-trends.vercel.app/article/{search_term_string}",
+              "query-input": "required name=search_term_string"
+            }
+          })}
+        </script>
+
       </Helmet>
 
       <Navbar />
